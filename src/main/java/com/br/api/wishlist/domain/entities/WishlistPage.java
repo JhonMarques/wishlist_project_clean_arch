@@ -1,19 +1,13 @@
 package com.br.api.wishlist.domain.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class WishlistPage {
     private String clientId;
     private Integer page;
-
-    public String getClientId() {
-        return clientId;
-    }
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
-    public Integer getPage() {
-        return page;
-    }
-    public void setPage(Integer page) {
-        this.page = page;
-    }
 }

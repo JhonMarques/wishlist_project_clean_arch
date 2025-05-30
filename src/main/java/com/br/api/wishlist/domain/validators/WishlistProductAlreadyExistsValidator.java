@@ -11,11 +11,6 @@ import org.springframework.stereotype.Component;
 public class WishlistProductAlreadyExistsValidator implements IWishlistCreateValidator {
 
     @Override
-    public void validate(WishlistCreateValidatorParams params) {
-
-    }
-
-    @Override
     public void validate(WishlistValidationParams params) {
         boolean alreadyExists = params.getSearchedWishlist()
                 .getProducts()

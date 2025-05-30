@@ -1,10 +1,10 @@
 package com.br.api.wishlist.bdd;
 
 import com.br.api.wishlist.domain.converters.DeleteWishlistValidationParamsConverter;
-import com.br.api.wishlist.domain.entities.Product;
+import com.br.api.wishlist.domain.entities.WishlistProduct;
 import com.br.api.wishlist.domain.entities.Wishlist;
 import com.br.api.wishlist.domain.repositories.IWishlistRepository;
-import com.br.api.wishlist.domain.usecases.DeleteWishlistProduct;
+import com.br.api.wishlist.application.usecases.DeleteWishlistProduct;
 import com.br.api.wishlist.domain.validators.delete.WishlistDeleteValidator;
 import com.br.api.wishlist.domain.validators.objectid.WishlistObjectIdValidator;
 import io.cucumber.java.Before;
@@ -42,7 +42,7 @@ public class DeleteWishlistProductSteps {
     public void a_client_with_a_wishlist_containing_the_product(String clientId, String productId) {
         this.clientId = clientId;
         this.productId = productId;
-        Product product = new Product(new ObjectId(productId));
+        WishlistProduct product = new WishlistProduct(new ObjectId(productId));
         wishlist = new Wishlist();
         wishlist.setId(String.valueOf(new ObjectId()));
         wishlist.setClientId(clientId);
@@ -68,8 +68,8 @@ public class DeleteWishlistProductSteps {
     public void a_client_with_multiple_products_including(String clientId, String productId) {
         this.clientId = clientId;
         this.productId = productId;
-        Product targetProduct = new Product(new ObjectId(productId));
-        Product otherProduct = new Product(new ObjectId());
+        WishlistProduct targetProduct = new WishlistProduct(new ObjectId(productId));
+        WishlistProduct otherProduct = new WishlistProduct(new ObjectId());
         wishlist = new Wishlist();
         wishlist.setId(String.valueOf(new ObjectId()));
         wishlist.setClientId(clientId);
@@ -105,7 +105,7 @@ public class DeleteWishlistProductSteps {
         wishlist.setId("6657a735bcf1e9446c5f50aa");
         wishlist.setClientId(clientId);
 
-        Product product = new Product(new ObjectId(productId));
+        WishlistProduct product = new WishlistProduct(new ObjectId(productId));
         wishlist.setProducts(List.of(product));
 
         when(wishlistRepository.existsByClientId(clientId)).thenReturn(true);
@@ -132,8 +132,8 @@ public class DeleteWishlistProductSteps {
         this.wishlist.setId("6657a735bcf1e9446c5f50aa");
         this.wishlist.setClientId(clientId);
 
-        Product product1 = new Product(new ObjectId(productId1));
-        Product product2 = new Product(new ObjectId(productId2));
+        WishlistProduct product1 = new WishlistProduct(new ObjectId(productId1));
+        WishlistProduct product2 = new WishlistProduct(new ObjectId(productId2));
         this.wishlist.setProducts(List.of(product1, product2));
 
         when(wishlistRepository.existsByClientId(clientId)).thenReturn(true);
@@ -174,7 +174,7 @@ public class DeleteWishlistProductSteps {
         this.wishlist = new Wishlist();
         this.wishlist.setId("6657a735bcf1e9446c5f50aa");
         this.wishlist.setClientId(clientId);
-        this.wishlist.setProducts(List.of(new Product(new ObjectId(productId))));
+        this.wishlist.setProducts(List.of(new WishlistProduct(new ObjectId(productId))));
 
         when(wishlistRepository.existsByClientId(clientId)).thenReturn(true);
         when(wishlistRepository.findByClientId(clientId)).thenReturn(this.wishlist);

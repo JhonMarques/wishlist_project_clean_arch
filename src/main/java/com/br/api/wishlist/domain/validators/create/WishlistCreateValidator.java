@@ -17,11 +17,6 @@ public class WishlistCreateValidator implements IWishlistCreateValidator {
     }
 
     @Override
-    public void validate(WishlistCreateValidatorParams params) {
-
-    }
-
-    @Override
     public void validate(WishlistValidationParams params) {
         for (IWishlistCreateValidator validation : validations) {
             validation.validate(params);

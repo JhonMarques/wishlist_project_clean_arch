@@ -4,13 +4,12 @@ import org.bson.types.ObjectId;
 
 import java.util.List;
 
-
 public class Wishlist {
 
     private ObjectId id;
     private ObjectId clientId;
 
-    private List<Product> products;
+    private List<WishlistProduct> products;
 
     public Wishlist() {
 
@@ -39,11 +38,11 @@ public class Wishlist {
         this.clientId = new ObjectId(clientId);
     }
 
-    public List<Product> getProducts() {
+    public List<WishlistProduct> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(List<WishlistProduct> products) {
         this.products = products;
     }
 }

@@ -1,12 +1,11 @@
 package com.br.api.wishlist.bdd;
 
 import com.br.api.wishlist.domain.converters.CreateWishlistValidationParamsConverter;
-import com.br.api.wishlist.domain.entities.Product;
+import com.br.api.wishlist.domain.entities.WishlistProduct;
 import com.br.api.wishlist.domain.entities.Wishlist;
 import com.br.api.wishlist.domain.repositories.IWishlistRepository;
-import com.br.api.wishlist.domain.usecases.CreateWishlistProduct;
+import com.br.api.wishlist.application.usecases.CreateWishlistProduct;
 import com.br.api.wishlist.domain.validators.create.WishlistCreateValidator;
-import com.br.api.wishlist.domain.validators.params.WishlistCreateValidatorParams;
 import com.br.api.wishlist.domain.validators.params.WishlistValidationParams;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
@@ -47,8 +46,8 @@ public class CreateWishlistProductSteps {
 
     @Given("the client sends a wishlist with productId {string}")
     public void the_client_sends_a_wishlist_with_productId(String productId) {
-        Product product = new Product(new ObjectId(productId));
-        List<Product> products = new ArrayList<>();
+        WishlistProduct product = new WishlistProduct(new ObjectId(productId));
+        List<WishlistProduct> products = new ArrayList<>();
         products.add(product);
         wishlist.setProducts(products);
     }
@@ -91,7 +90,7 @@ public class CreateWishlistProductSteps {
 
     @Given("the client sends a wishlist with a new productId {string}")
     public void the_client_sends_a_wishlist_with_new_productId(String productId) {
-        Product newProduct = new Product(new ObjectId(productId));
+        WishlistProduct newProduct = new WishlistProduct(new ObjectId(productId));
         wishlist.setProducts(List.of(newProduct));
     }
 

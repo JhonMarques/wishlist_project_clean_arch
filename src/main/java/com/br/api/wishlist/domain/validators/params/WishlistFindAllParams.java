@@ -1,6 +1,6 @@
 package com.br.api.wishlist.domain.validators.params;
 
-import com.br.api.wishlist.domain.entities.Product;
+import com.br.api.wishlist.domain.entities.WishlistProduct;
 import com.br.api.wishlist.domain.validators.findall.WishlistFindAllValidationParams;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class WishlistFindAllParams extends WishlistFindAllValidationParams {
 
     private boolean existsWishlist;
-    private List<Product> listProducts;
+    private List<WishlistProduct> listProducts;
 
     public boolean isExistsWishlist() {
         return existsWishlist;
@@ -17,10 +17,10 @@ public class WishlistFindAllParams extends WishlistFindAllValidationParams {
     public void setExistsWishlist(boolean existsWishlist) {
         this.existsWishlist = existsWishlist;
     }
-    public List<Product> getListProducts() {
+    public List<WishlistProduct> getListProducts() {
         return listProducts;
     }
-    public void setListProducts(List<Product> listProducts) {
+    public void setListProducts(List<WishlistProduct> listProducts) {
         this.listProducts = listProducts;
     }
 

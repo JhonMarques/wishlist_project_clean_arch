@@ -5,9 +5,5 @@ import com.br.api.wishlist.domain.validators.params.WishlistCreateValidatorParam
 import com.br.api.wishlist.domain.validators.params.WishlistValidationParams;
 
 public interface IWishlistCreateValidator {
-
-    void validate(WishlistCreateValidatorParams params);
-
     void validate(WishlistValidationParams params);
-
 }

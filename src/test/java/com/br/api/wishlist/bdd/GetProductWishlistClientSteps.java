@@ -2,7 +2,7 @@ package com.br.api.wishlist.bdd;
 
 import com.br.api.wishlist.domain.exceptions.WishlistDoesNotExistException;
 import com.br.api.wishlist.domain.repositories.IWishlistRepository;
-import com.br.api.wishlist.domain.usecases.GetProductWishlistClient;
+import com.br.api.wishlist.application.usecases.GetProductWishlistClient;
 import com.br.api.wishlist.domain.validators.objectid.WishlistObjectIdValidator;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;

@@ -1,10 +1,10 @@
 package com.br.api.wishlist.bdd;
 
 import com.br.api.wishlist.domain.converters.FindAllWishlistValidationParamsConverter;
-import com.br.api.wishlist.domain.entities.Product;
+import com.br.api.wishlist.domain.entities.WishlistProduct;
 import com.br.api.wishlist.domain.entities.WishlistPage;
 import com.br.api.wishlist.domain.repositories.IWishlistRepository;
-import com.br.api.wishlist.domain.usecases.GetAllProductsWishlistClient;
+import com.br.api.wishlist.application.usecases.GetAllProductsWishlistClient;
 import com.br.api.wishlist.domain.validators.findall.WishlistFindAllValidator;
 import com.br.api.wishlist.domain.validators.objectid.WishlistObjectIdValidator;
 import io.cucumber.java.Before;
@@ -27,7 +27,7 @@ public class GetAllProductsWishlistClientSteps {
     private GetAllProductsWishlistClient useCase;
 
     private WishlistPage request;
-    private List<Product> result;
+    private List<WishlistProduct> result;
     private Exception thrownException;
 
     private String clientId;
@@ -45,10 +45,10 @@ public class GetAllProductsWishlistClientSteps {
     @Given("the client {string} has a wishlist with products {string}, {string}, {string}")
     public void the_client_has_a_wishlist_with_products(String clientId, String product1, String product2, String product3) {
         this.clientId = clientId;
-        Product p1 = new Product(new ObjectId("6657a735bcf1e9446c5f5101"));
-        Product p2 = new Product(new ObjectId("6657a735bcf1e9446c5f5102"));
-        Product p3 = new Product(new ObjectId("6657a735bcf1e9446c5f5103"));
-        List<Product> products = List.of(p1, p2, p3);
+        WishlistProduct p1 = new WishlistProduct(new ObjectId("6657a735bcf1e9446c5f5101"));
+        WishlistProduct p2 = new WishlistProduct(new ObjectId("6657a735bcf1e9446c5f5102"));
+        WishlistProduct p3 = new WishlistProduct(new ObjectId("6657a735bcf1e9446c5f5103"));
+        List<WishlistProduct> products = List.of(p1, p2, p3);
 
         when(wishlistRepository.getAllProductsWishlistClient(any())).thenReturn(products);
         when(wishlistRepository.existsByClientId(clientId)).thenReturn(true);
