@@ -1,16 +1,14 @@
-Feature: Wishlist product check
+Feature: Check if a product exists in the client's wishlist
 
-  Scenario: Check if an product exists in an wishlist
-    Given a client with ID "5e3fabcd6789123456789013" with an wishlist which has the product ID "5e2fbd88db12345678901245"
-    When I try to check the product of ID "5e2fbd88db12345678901245" from the wishlist from the client ID "5e3fabcd6789123456789013"
-    Then the check should be true
+  Scenario: Product exists in existing wishlist
+    Given the client with ID "60d0fe4f5311236168a109ca" and product ID "60d0fe4f5311236168a109cb"
+    And the wishlist exists for the client
+    And the product exists in the wishlist
+    When checking if the product exists in the wishlist
+    Then the result should be true
 
-  Scenario: Check if an product exists in an wishlist but it does not
-    Given a client with ID "5e3fabcd6789123456789013" with an wishlist which has the product ID "5e2fbd88db12345678901245"
-    When I try to check the product of ID "5e2fbd88db12345678901246" from the wishlist from the client ID "5e3fabcd6789123456789013"
-    Then the check should be false
-
-  Scenario: Check if an product exists in an inexisting wishlist
-    Given a client with ID "5e3fabcd6789123456789013" with an wishlist which has the product ID "5e2fbd88db12345678901245"
-    When I try to check the product of ID "5e2fbd88db12345678901245" from the wishlist from the client ID "5e3fabcd6789123456789090"
-    Then after trying searching should give me an exception saying "This wishlist was not found"
+  Scenario: Wishlist does not exist for the client
+    Given the client with ID "60d0fe4f5311236168a109ca" and product ID "60d0fe4f5311236168a109cb"
+    And the wishlist does not exist for the client
+    When checking if the product exists in the wishlist
+    Then an exception should be thrown indicating wishlist not found

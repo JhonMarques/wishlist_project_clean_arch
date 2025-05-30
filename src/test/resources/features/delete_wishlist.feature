@@ -1,21 +1,19 @@
-Feature: Wishlist product removal
+Feature: Delete Wishlist Product
+  As a system user
+  I want to delete a product from a wishlist
+  So that the wishlist is updated or deleted accordingly
 
-  Scenario: Remove a product from an already existing wishlist
-    Given a client with ID "tmz480kC80Rgoit81l3ktrwb" with an wishlist which has two products ID "507f1f77bcf86cd799439011" and "507f1f77bcf86cd799439012"
-    When I try to remove the product of ID "507f1f77bcf86cd799439011" from the wishlist from the client ID "tmz480kC80Rgoit81l3ktrwb"
-    Then the wishlist from the client ID "tmz480kC80Rgoit81l3ktrwb" should have 1 products now
+  Scenario: Deleting a product when it is the only one in the wishlist
+    Given the client "6657a735bcf1e9446c5f50ee" has a wishlist with one product "6657a735bcf1e9446c5f50ef"
+    When the client deletes the product "6657a735bcf1e9446c5f50ef"
+    Then the wishlist should be deleted
 
-  Scenario: Remove a product from a non-existing wishlist
-    Given a client with ID "tmz480kC80Rgoit81l3ktrwb" with no wishlist
-    When I try to remove the product of ID "507f1f77bcf86cd799439011" from the wishlist from the client ID "tmz480kC80Rgoit81l3ktrwb"
-    Then after trying removing should give me an exception saying "There is no withlist to this client to delete"
+  Scenario: Deleting a product when there are multiple products in the wishlist
+    Given the client "6657a735bcf1e9446c5f50ee" has a wishlist with products "6657a735bcf1e9446c5f50ef" and "6657a735bcf1e9446c5f50f0"
+    When the client deletes the product "6657a735bcf1e9446c5f50ef"
+    Then the product should be removed and the wishlist should be updated
 
-  Scenario: Remove a non-existent product from an already existing wishlist
-    Given a client with ID "tmz480kC80Rgoit81l3ktrwb" with an wishlist which has two products ID "507f1f77bcf86cd799439011" and "507f1f77bcf86cd799439012"
-    When I try to remove the product of ID "507f1f77bcf86cd799439099" from the wishlist from the client ID "tmz480kC80Rgoit81l3ktrwb"
-    Then after trying removing should give me an exception saying "This product do not exist in this wishlist to remove it"
-
-  Scenario: Remove a product from an already existing wishlist with only one product
-    Given a client with ID "tmz480kC80Rgoit81l3ktrwb" with an wishlist which has one product ID "507f1f77bcf86cd799439011"
-    When I try to remove the product of ID "507f1f77bcf86cd799439011" from the wishlist from the client ID "tmz480kC80Rgoit81l3ktrwb"
-    Then the wishlist from the client ID "tmz480kC80Rgoit81l3ktrwb" should not exists
+  Scenario: Attempting to delete a product not present in the wishlist
+    Given the client "6657a735bcf1e9446c5f50ee" has a wishlist with product "6657a735bcf1e9446c5f50f1"
+    When the client tries to delete the product "6657a735bcf1e9446c5f50f2"
+    Then an exception should be thrown indicating the product cannot be deleted
