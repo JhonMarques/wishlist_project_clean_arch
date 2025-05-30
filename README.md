@@ -126,7 +126,3 @@ Desenvolvido por **Jhonatas Katayama Marques**
 [www.linkedin.com/in/jhonatas-katayama-marques](https://www.linkedin.com/in/jhonatas-katayama-marques)
 
 ---
-
-## 📝 Licença
-
-Este projeto é licenciado sob a [MIT License](LICENSE).
